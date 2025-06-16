@@ -9,26 +9,38 @@ src/main/java/com/ywchoi/hexagonal/
 ├── adapter
 │   ├── in
 │   │   └── web
-│   │       └── PostController.java        ← REST 입력 어댑터
+│   │       ├── dto
+│   │       │   ├── ExternalApiResponse.java  ← 외부 API 응답 DTO
+│   │       │   ├── PostRequest.java
+│   │       │   └── PostUpdateRequest.java
+│   │       ├── ExternalApiController.java    ← 외부 API 입력 어댑터
+│   │       ├── HomeController.java           ← 홈 컨트롤러
+│   │       ├── PostController.java           ← REST 입력 어댑터
+│   │       └── PostViewController.java       ← 웹 뷰 컨트롤러
 │   └── out
-│       └── persistence
-│           ├── PostJpaEntity.java         ← JPA 엔티티
-│           ├── PostJpaRepository.java     ← Spring Data JPA
-│           └── PostRepositoryImpl.java    ← 출력 어댑터
+│       ├── persistence
+│       │   ├── PostJpaEntity.java            ← JPA 엔티티
+│       │   ├── PostJpaRepository.java        ← Spring Data JPA
+│       │   └── PostRepositoryImpl.java       ← 출력 어댑터
+│       └── ExternalApiAdapter.java           ← 외부 API 출력 어댑터
 │
 ├── application
 │   └── service
-│       └── PostService.java               ← 유스케이스 구현체
+│       ├── ExternalApiService.java           ← 외부 API 유스케이스 구현체
+│       └── PostService.java                  ← 게시글 유스케이스 구현체
 │
 ├── domain
 │   └── model
-│       └── Post.java                      ← 게시글 도메인 모델
+│       ├── ExternalData.java                 ← 외부 API 도메인 모델
+│       └── Post.java                         ← 게시글 도메인 모델
 │
 ├── port
 │   ├── in
-│   │   └── PostUseCase.java               ← 유스케이스 인터페이스
+│   │   ├── ExternalApiUseCase.java           ← 외부 API 유스케이스 인터페이스
+│   │   └── PostUseCase.java                  ← 게시글 유스케이스 인터페이스
 │   └── out
-│       └── PostRepository.java            ← 도메인 저장소 인터페이스
+│       ├── ExternalApiPort.java              ← 외부 API 포트 인터페이스
+│       └── PostRepository.java               ← 도메인 저장소 인터페이스
 │
 ├── infrastructure
 │   └── config
@@ -158,3 +170,70 @@ src/main/java/com/ywchoi/hexagonal/
 - 초기 설계와 구현에 더 많은 시간이 필요합니다.
 - 개발자가 아키텍처 패턴을 이해하고 규칙을 따라야 합니다.
 - 인터페이스와 클래스가 많아져 코드량이 증가할 수 있습니다.
+
+## 외부 API 통신 기능
+
+이 프로젝트에는 외부 API와 통신하여 데이터를 가져오고 가공하는 기능이 추가되었습니다. 이 기능은 헥사고날 아키텍처 패턴에 따라 구현되었습니다.
+
+### 주요 컴포넌트
+
+- **도메인 모델**: `ExternalData` - 외부 API에서 가져온 데이터를 표현하는 도메인 모델
+- **입력 포트**: `ExternalApiUseCase` - 외부 API 데이터를 가져오고 처리하는 유스케이스 인터페이스
+- **출력 포트**: `ExternalApiPort` - 외부 API와 통신하기 위한 포트 인터페이스
+- **애플리케이션 서비스**: `ExternalApiService` - 유스케이스 구현체
+- **입력 어댑터**: `ExternalApiController` - 외부 API 데이터를 처리하는 컨트롤러
+- **출력 어댑터**: `ExternalApiAdapter` - 외부 API와 통신하는 어댑터 구현체
+- **DTO**: `ExternalApiResponse` - 외부 API 응답을 위한 DTO 클래스
+
+### API 엔드포인트
+
+- `GET /api/external/{resourceId}`: 외부 API에서 데이터를 가져와 가공하여 반환
+- `POST /api/external/request/{resourceId}`: 외부 API에 데이터를 요청하는 POST 엔드포인트
+
+## 헥사고날 아키텍처 개발 유의사항
+
+헥사고날 아키텍처에 따라 코드를 작성할 때 다음 사항을 유의해야 합니다:
+
+### 1. 도메인 모델 설계
+
+- 도메인 모델은 외부 의존성 없이 순수한 Java 객체로 구현해야 합니다.
+- 도메인 모델에는 비즈니스 로직만 포함하고, 인프라스트럭처 관련 코드는 포함하지 않습니다.
+- 가능한 불변(Immutable) 객체로 설계하여 상태 변경 시 새로운 객체를 생성하는 방식을 사용합니다.
+
+### 2. 포트 설계
+
+- 포트는 인터페이스로 정의하고, 구체적인 구현은 어댑터에서 합니다.
+- 입력 포트(Primary/Driving)는 애플리케이션이 외부에 제공하는 기능을 정의합니다.
+- 출력 포트(Secondary/Driven)는 애플리케이션이 외부 시스템에 접근하기 위한 인터페이스를 정의합니다.
+
+### 3. 어댑터 구현
+
+- 어댑터는 특정 기술에 의존적인 코드를 포함할 수 있습니다.
+- 입력 어댑터는 외부 요청을 애플리케이션의 입력 포트로 변환합니다.
+- 출력 어댑터는 애플리케이션의 출력 포트를 실제 외부 시스템과 연결합니다.
+- 어댑터는 도메인 모델과 외부 시스템 간의 데이터 변환을 담당합니다.
+
+### 4. 의존성 방향
+
+- 모든 의존성은 내부(도메인)를 향해야 합니다.
+- 도메인 모델은 어댑터나 포트에 의존해서는 안 됩니다.
+- 애플리케이션 서비스는 입력 포트를 구현하고 출력 포트에 의존합니다.
+
+### 5. 패키지 구조
+
+- 패키지 구조는 아키텍처 계층을 명확히 반영해야 합니다.
+- 각 계층 간의 경계를 명확히 하고, 의존성 규칙을 위반하지 않도록 합니다.
+- 도메인 모델, 포트, 어댑터, 애플리케이션 서비스를 별도의 패키지로 분리합니다.
+
+### 6. 테스트
+
+- 도메인 모델과 애플리케이션 서비스는 외부 의존성 없이 단위 테스트가 가능해야 합니다.
+- 모의 객체(Mock)를 사용하여 포트를 쉽게 대체할 수 있어야 합니다.
+- 통합 테스트는 실제 어댑터를 사용하여 수행합니다.
+
+### 7. 공통 실수 방지
+
+- 도메인 모델에 프레임워크 의존성 추가 금지 (예: JPA 어노테이션)
+- 애플리케이션 서비스에서 직접 어댑터 호출 금지
+- 출력 포트 없이 직접 외부 시스템 접근 금지
+- 도메인 로직을 어댑터나 애플리케이션 서비스에 구현하는 것 금지
