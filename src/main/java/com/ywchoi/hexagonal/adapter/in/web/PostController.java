@@ -41,7 +41,7 @@ public class PostController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PostMapping("/{id}/update")
     public ResponseEntity<Post> updatePost(
             @PathVariable Long id,
             @RequestBody PostUpdateRequest request) {
@@ -49,7 +49,7 @@ public class PostController {
         return ResponseEntity.ok(updatedPost);
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/{id}/delete")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postUseCase.deletePost(id);
         return ResponseEntity.noContent().build();
