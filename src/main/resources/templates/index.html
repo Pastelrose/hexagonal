@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/default :: layout(~{::title}, ~{::section})}">
+<head>
+    <title>헥사고날 아키텍처 게시판</title>
+</head>
+<body>
+    <section>
+        <div class="jumbotron">
+            <h1 class="display-4">헥사고날 아키텍처 연습 게시판</h1>
+            <p class="lead">헥사고날 아키텍처 패턴을 적용한 Spring Boot 애플리케이션입니다.</p>
+            <hr class="my-4">
+            <p>이 프로젝트는 헥사고날 아키텍처의 개념을 실습하기 위한 간단한 게시판 애플리케이션입니다.</p>
+            <a class="btn btn-primary btn-lg" th:href="@{/posts}" role="button">게시판 바로가기</a>
+        </div>
+    </section>
+</body>
+</html>
