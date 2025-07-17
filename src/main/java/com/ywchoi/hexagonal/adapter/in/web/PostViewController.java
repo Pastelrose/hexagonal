@@ -3,7 +3,7 @@ package com.ywchoi.hexagonal.adapter.in.web;
 import com.ywchoi.hexagonal.adapter.in.web.dto.PostRequest;
 import com.ywchoi.hexagonal.adapter.in.web.dto.PostUpdateRequest;
 import com.ywchoi.hexagonal.domain.model.Post;
-import com.ywchoi.hexagonal.port.in.PostUseCase;
+import com.ywchoi.hexagonal.application.port.in.PostUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

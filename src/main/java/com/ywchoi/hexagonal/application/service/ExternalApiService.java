@@ -1,8 +1,8 @@
 package com.ywchoi.hexagonal.application.service;
 
 import com.ywchoi.hexagonal.domain.model.ExternalData;
-import com.ywchoi.hexagonal.port.in.ExternalApiUseCase;
-import com.ywchoi.hexagonal.port.out.ExternalApiPort;
+import com.ywchoi.hexagonal.application.port.in.ExternalApiUseCase;
+import com.ywchoi.hexagonal.application.port.out.ExternalApiPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

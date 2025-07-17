@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8
+    container_name: mysql-board
+    environment:
+      MYSQL_ROOT_PASSWORD: qwER12#$
+      MYSQL_DATABASE: ywchoi_practise
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: qwER12#$
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+
+  hexagonal:
+    build: .
+    container_name: board-hexagonal
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ywchoi_practise?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+      SPRING_DATASOURCE_USERNAME: testuser
+      SPRING_DATASOURCE_PASSWORD: qwER12#$
+    restart: always
+
+volumes:
+  mysql-data:

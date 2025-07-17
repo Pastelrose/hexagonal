@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.port.out;
+package com.ywchoi.hexagonal.application.port.out;
 
 import com.ywchoi.hexagonal.domain.model.Post;
 

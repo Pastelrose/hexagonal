@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.port.in;
+package com.ywchoi.hexagonal.application.port.in;
 
 import com.ywchoi.hexagonal.domain.model.ExternalData;
 

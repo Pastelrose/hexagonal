@@ -1,8 +1,8 @@
 package com.ywchoi.hexagonal.application.service;
 
 import com.ywchoi.hexagonal.domain.model.Post;
-import com.ywchoi.hexagonal.port.in.PostUseCase;
-import com.ywchoi.hexagonal.port.out.PostRepository;
+import com.ywchoi.hexagonal.application.port.in.PostUseCase;
+import com.ywchoi.hexagonal.application.port.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

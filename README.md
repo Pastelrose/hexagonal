@@ -65,16 +65,16 @@ src/main/java/com/ywchoi/hexagonal/
 - **어댑터(Adapter)**: 포트 구현체로, 외부 시스템과의 통신 담당
 - **애플리케이션(Application)**: 비즈니스 유스케이스 구현
 
-## 실행 방법
+## 실행 방법 (docker)
+
+```bash
+docker-compose up --build
+```
+
+## 실행 방법 (Gradle)
 
 ```bash
 ./gradlew bootRun
-```
-
-## 테스트 실행
-
-```bash
-./gradlew test
 ```
 
 ## 헥사고날 아키텍처의 특징과 이점

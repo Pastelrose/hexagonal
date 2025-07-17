@@ -1,7 +1,7 @@
 package com.ywchoi.hexagonal.adapter.out.persistence;
 
 import com.ywchoi.hexagonal.domain.model.Post;
-import com.ywchoi.hexagonal.port.out.PostRepository;
+import com.ywchoi.hexagonal.application.port.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
