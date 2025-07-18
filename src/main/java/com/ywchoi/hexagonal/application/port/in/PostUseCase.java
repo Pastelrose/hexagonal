@@ -1,6 +1,6 @@
 package com.ywchoi.hexagonal.application.port.in;
 
-import com.ywchoi.hexagonal.domain.model.Post;
+import com.ywchoi.hexagonal.domain.Post;
 
 import java.util.List;
 import java.util.Optional;

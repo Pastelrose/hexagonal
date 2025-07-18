@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.adapter.in.web;
+package com.ywchoi.hexagonal.infrastructure.adapter.in;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

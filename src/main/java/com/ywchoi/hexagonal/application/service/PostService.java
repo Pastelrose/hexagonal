@@ -1,6 +1,6 @@
 package com.ywchoi.hexagonal.application.service;
 
-import com.ywchoi.hexagonal.domain.model.Post;
+import com.ywchoi.hexagonal.domain.Post;
 import com.ywchoi.hexagonal.application.port.in.PostUseCase;
 import com.ywchoi.hexagonal.application.port.out.PostRepository;
 import lombok.RequiredArgsConstructor;

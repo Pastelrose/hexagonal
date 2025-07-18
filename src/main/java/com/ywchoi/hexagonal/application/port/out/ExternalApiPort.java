@@ -1,6 +1,6 @@
 package com.ywchoi.hexagonal.application.port.out;
 
-import com.ywchoi.hexagonal.domain.model.ExternalData;
+import com.ywchoi.hexagonal.domain.ExternalData;
 
 /**
  * 외부 API와 통신하기 위한 포트 인터페이스

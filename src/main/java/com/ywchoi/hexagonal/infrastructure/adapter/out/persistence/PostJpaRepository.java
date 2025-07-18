@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.adapter.out.persistence;
+package com.ywchoi.hexagonal.infrastructure.adapter.out.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

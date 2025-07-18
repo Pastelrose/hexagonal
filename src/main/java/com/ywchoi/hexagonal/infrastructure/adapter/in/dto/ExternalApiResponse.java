@@ -1,6 +1,6 @@
-package com.ywchoi.hexagonal.adapter.in.web.dto;
+package com.ywchoi.hexagonal.infrastructure.adapter.in.dto;
 
-import com.ywchoi.hexagonal.domain.model.ExternalData;
+import com.ywchoi.hexagonal.domain.ExternalData;
 import lombok.Getter;
 
 /**

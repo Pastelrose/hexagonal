@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.adapter.out.persistence;
+package com.ywchoi.hexagonal.infrastructure.adapter.out.persistence;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

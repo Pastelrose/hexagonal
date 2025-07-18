@@ -1,4 +1,4 @@
-package com.ywchoi.hexagonal.domain.model;
+package com.ywchoi.hexagonal.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
-package com.ywchoi.hexagonal.adapter.in.web;
+package com.ywchoi.hexagonal.infrastructure.adapter.in;
 
-import com.ywchoi.hexagonal.adapter.in.web.dto.ExternalApiResponse;
-import com.ywchoi.hexagonal.domain.model.ExternalData;
+import com.ywchoi.hexagonal.infrastructure.adapter.in.dto.ExternalApiResponse;
+import com.ywchoi.hexagonal.domain.ExternalData;
 import com.ywchoi.hexagonal.application.port.in.ExternalApiUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

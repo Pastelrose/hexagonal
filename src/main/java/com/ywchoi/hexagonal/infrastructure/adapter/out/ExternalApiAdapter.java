@@ -1,6 +1,6 @@
-package com.ywchoi.hexagonal.adapter.out;
+package com.ywchoi.hexagonal.infrastructure.adapter.out;
 
-import com.ywchoi.hexagonal.domain.model.ExternalData;
+import com.ywchoi.hexagonal.domain.ExternalData;
 import com.ywchoi.hexagonal.application.port.out.ExternalApiPort;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

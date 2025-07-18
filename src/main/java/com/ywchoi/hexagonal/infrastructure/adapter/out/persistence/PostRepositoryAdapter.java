@@ -1,6 +1,6 @@
-package com.ywchoi.hexagonal.adapter.out.persistence;
+package com.ywchoi.hexagonal.infrastructure.adapter.out.persistence;
 
-import com.ywchoi.hexagonal.domain.model.Post;
+import com.ywchoi.hexagonal.domain.Post;
 import com.ywchoi.hexagonal.application.port.out.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class PostRepositoryImpl implements PostRepository {
+public class PostRepositoryAdapter implements PostRepository {
 
     private final PostJpaRepository postJpaRepository;
 

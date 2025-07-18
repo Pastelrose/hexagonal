@@ -1,8 +1,8 @@
-package com.ywchoi.hexagonal.adapter.in.web;
+package com.ywchoi.hexagonal.infrastructure.adapter.in;
 
-import com.ywchoi.hexagonal.adapter.in.web.dto.PostRequest;
-import com.ywchoi.hexagonal.adapter.in.web.dto.PostUpdateRequest;
-import com.ywchoi.hexagonal.domain.model.Post;
+import com.ywchoi.hexagonal.infrastructure.adapter.in.dto.PostRequest;
+import com.ywchoi.hexagonal.infrastructure.adapter.in.dto.PostUpdateRequest;
+import com.ywchoi.hexagonal.domain.Post;
 import com.ywchoi.hexagonal.application.port.in.PostUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
